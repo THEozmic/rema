@@ -7,11 +7,17 @@ import VueFullPage from "vue-fullpage.js";
 export default function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
 
-  head.link.push({
-    rel: "stylesheet",
-    href:
-      "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css"
-  });
+  head.link.push(
+    {
+      rel: "stylesheet",
+      href:
+        "https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.7/fullpage.css"
+    },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css?family=Trocchi|Montserrat&display=swap"
+    }
+  );
 
   Vue.use(VueFullPage);
 
