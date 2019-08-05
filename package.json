@@ -1,0 +1,13 @@
+{
+  "name": "rema",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.6.0",
+    "vue-fullpage.js": "^0.1.4"
+  }
+}
