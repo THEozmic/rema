@@ -2,6 +2,7 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from "~/layouts/Default.vue";
+import 'fullpage.js/vendors/scrolloverflow'
 import VueFullPage from "vue-fullpage.js";
 
 export default function(Vue, { router, head, isClient }) {
@@ -15,7 +16,14 @@ export default function(Vue, { router, head, isClient }) {
     },
     {
       rel: "stylesheet",
-      href: "https://fonts.googleapis.com/css?family=Trocchi|Montserrat&display=swap"
+      href:
+        "https://fonts.googleapis.com/css?family=Trocchi|Montserrat&display=swap"
+    }
+  );
+
+  head.script.push(
+    {
+      src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"
     }
   );
 
