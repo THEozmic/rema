@@ -2,10 +2,8 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from "~/layouts/Default.vue";
-import 'fullpage.js/vendors/scrolloverflow'
-import VueFullPage from "vue-fullpage.js";
 
-export default function(Vue, { router, head, isClient }) {
+export default async function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
 
   head.link.push(
@@ -21,13 +19,23 @@ export default function(Vue, { router, head, isClient }) {
     }
   );
 
-  head.script.push(
-    {
-      src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"
-    }
-  );
+  head.script.push({
+    src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"
+  });
 
-  Vue.use(VueFullPage);
+  if (isClient) {
+    let VueFullPage, scrolloverflow;
+
+    const func = async () => {
+      import("fullpage.js/vendors/scrolloverflow");
+      VueFullPage = await import("vue-fullpage.js");
+      console.log(VueFullPage, ">>>>>", scrolloverflow);
+    };
+
+    await func();
+
+    Vue.use(VueFullPage.default);
+  }
 
   Vue.component("Layout", DefaultLayout);
 }

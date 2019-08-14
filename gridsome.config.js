@@ -6,5 +6,11 @@
 
 module.exports = {
   siteName: "Gridsome",
-  plugins: []
+  plugins: [
+    {
+      use: "~/lib/vue-fullpage"
+    }
+  ],
+  siteUrl: "https://theozmic.github.io",
+  pathPrefix: "/rema-demo"
 };
