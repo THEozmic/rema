@@ -5,12 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Gridsome",
-  plugins: [
-    {
-      use: "~/lib/vue-fullpage"
-    }
-  ],
+  siteName: "Divine Ikubor",
+  plugins: [],
   siteUrl: "https://theozmic.github.io",
-  pathPrefix: "/rema-demo"
+  pathPrefix: "/rema"
 };

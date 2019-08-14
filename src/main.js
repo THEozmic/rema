@@ -24,17 +24,15 @@ export default async function(Vue, { router, head, isClient }) {
   });
 
   if (isClient) {
-    let VueFullPage, scrolloverflow;
+    let VueFullPage;
 
     const func = async () => {
       import("fullpage.js/vendors/scrolloverflow");
       VueFullPage = await import("vue-fullpage.js");
-      console.log(VueFullPage, ">>>>>", scrolloverflow);
+      Vue.use(VueFullPage.default);
     };
 
     await func();
-
-    Vue.use(VueFullPage.default);
   }
 
   Vue.component("Layout", DefaultLayout);
