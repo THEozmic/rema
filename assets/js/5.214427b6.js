@@ -1,4 +1,4 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{266:function(t,i,s){var e;
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{268:function(t,i,s){var e;
 /**
 * Customized version of iScroll.js 0.1.3
 * It fixes bugs affecting its integration with fullpage.js
