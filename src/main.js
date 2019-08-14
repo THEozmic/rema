@@ -2,6 +2,7 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from "~/layouts/Default.vue";
+import VueLazyLoad from "vue-lazyload";
 
 export default async function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -33,6 +34,8 @@ export default async function(Vue, { router, head, isClient }) {
     };
 
     await func();
+
+    Vue.use(VueLazyLoad);
   }
 
   Vue.component("Layout", DefaultLayout);

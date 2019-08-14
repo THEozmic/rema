@@ -475,26 +475,8 @@
           <h2 class="section-header">PHOTOS</h2>
           <section>
             <div class="grid">
-              <div class="grid-item">
-                <g-image src="~/images/rema1.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema3.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema4.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema5.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema2.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema7.jpg"></g-image>
-              </div>
-              <div class="grid-item">
-                <g-image src="~/images/rema6.jpg"></g-image>
+              <div class="grid-item" v-for="(image, index) in images" :key="index">
+                <img v-lazy="image.src" @click="openGallery(index)" />
               </div>
             </div>
           </section>
@@ -590,21 +572,56 @@
         </li>
       </div>
     </ul>
+    <LightBox :images="images" ref="lightbox" :show-caption="false" :show-light-box="false"></LightBox>
   </div>
 </template>
 
 <script>
-import Chaffle from "chaffle";
 import TiltFx from "../lib/tilt";
 import { setTimeout } from "timers";
+import LightBox from "vue-image-lightbox";
+import "vue-image-lightbox/dist/vue-image-lightbox.min.css";
 
 export default {
   metaInfo: {
     title: "Rema"
   },
+  components: {
+    LightBox
+  },
   data() {
     return {
-      options: { licenseKey: null, scrollOverflow: true }
+      options: { licenseKey: null, scrollOverflow: true, scrollBar: false },
+      images: [
+        {
+          thumb: "/assets/static/src/images/rema1.jpg",
+          src: "/assets/static/src/images/rema1.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema3.jpg",
+          src: "/assets/static/src/images/rema3.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema4.jpg",
+          src: "/assets/static/src/images/rema4.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema5.jpg",
+          src: "/assets/static/src/images/rema5.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema2.jpg",
+          src: "/assets/static/src/images/rema2.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema7.jpg",
+          src: "/assets/static/src/images/rema7.jpg"
+        },
+        {
+          thumb: "/assets/static/src/images/rema6.jpg",
+          src: "/assets/static/src/images/rema6.jpg"
+        }
+      ]
     };
   },
   mounted() {
@@ -613,6 +630,11 @@ export default {
         const tiltFx = new TiltFx(el, {});
       });
     }, 300);
+  },
+  methods: {
+    openGallery(index) {
+      this.$refs.lightbox.showImage(index);
+    }
   }
 };
 </script>
@@ -1586,6 +1608,7 @@ body {
   padding: 0;
   text-align: center;
   margin-right: 5px;
+  cursor: pointer;
   // display: block;
   // float: left;
   // padding: 7px;
