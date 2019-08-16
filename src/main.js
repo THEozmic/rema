@@ -2,7 +2,6 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from "~/layouts/Default.vue";
-import VueLazyLoad from "vue-lazyload";
 
 export default async function(Vue, { router, head, isClient }) {
   // Set default layout as a global component
@@ -25,17 +24,23 @@ export default async function(Vue, { router, head, isClient }) {
   });
 
   if (isClient) {
-    let VueFullPage;
+    let VueFullPage, VueLazyLoad;
 
-    const func = async () => {
+    const loadNonSSR = async () => {
       import("fullpage.js/vendors/scrolloverflow");
       VueFullPage = await import("vue-fullpage.js");
       Vue.use(VueFullPage.default);
+      // const LightBox = require("vue-image-lightbox").default;
+      // console.log(LightBox);
+      // Vue.component(LightBox);
+
+      VueLazyLoad = require("vue-lazyload").default;
+      Vue.use(VueLazyLoad);
+
+      Vue.component("LightBox", () => import("vue-image-lightbox"));
     };
 
-    await func();
-
-    Vue.use(VueLazyLoad);
+    await loadNonSSR();
   }
 
   Vue.component("Layout", DefaultLayout);
