@@ -28,8 +28,7 @@ export default async function(Vue, { router, head, isClient }) {
 
     const loadNonSSR = async () => {
       import("fullpage.js/vendors/scrolloverflow");
-      VueFullPage = await import("vue-fullpage.js");
-      Vue.use(VueFullPage.default);
+
       // const LightBox = require("vue-image-lightbox").default;
       // console.log(LightBox);
       // Vue.component(LightBox);

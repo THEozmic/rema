@@ -610,6 +610,9 @@ export default {
   metaInfo: {
     title: "Rema"
   },
+  components: {
+    "full-page": () => import("vue-fullpage.js").then(m => m.FullPage)
+  },
   data() {
     return {
       options: { licenseKey: null, scrollOverflow: true, scrollBar: false },

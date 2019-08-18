@@ -91,7 +91,6 @@ class TiltFx {
     this.DOM.animatable.shine = this.DOM.el.querySelector(
       ".tilter__deco--shine > div"
     );
-    console.log(this.DOM.animatable);
     this._initEvents();
   }
 
