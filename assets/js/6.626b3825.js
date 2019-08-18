@@ -1,4 +1,4 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{264:function(e,t,n){
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{265:function(e,t,n){
 /*!
  * vue-fullpage.js v0.1.4
  * https://github.com/alvarotrigo/vue-fullpage.js
